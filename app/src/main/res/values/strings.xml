@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UserBase</string>
+    <string name="years">%1$d years</string>
 </resources>
