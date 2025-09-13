@@ -1,6 +1,5 @@
 package com.example.userbase.feature.addUser.presentation.screens
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -153,11 +152,28 @@ fun AddUserContent(
         )
 
         Box {
-            Text(
-                state.gender ?: stringResource(R.string.please_select_a_gender),
+            OutlinedTextField(
                 modifier = Modifier
-                    .clickable { expanded = !expanded }
-                    .background(MaterialTheme.colorScheme.surface, MaterialTheme.shapes.medium)
+                    .fillMaxWidth()
+                    .clickable { expanded = !expanded },
+                enabled = false,
+                value = state.gender ?: stringResource(R.string.please_select_a_gender),
+                onValueChange = {
+                    onAction(UserFormAction.UpdateGender(it))
+                },
+                label = { Text(stringResource(R.string.gender)) },
+                placeholder = { Text(stringResource(R.string.please_select_a_gender)) },
+                isError = state.genderErrorId != null,
+                supportingText = {
+                    if (state.genderErrorId != null) {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            text = stringResource(state.genderErrorId),
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                },
+                singleLine = true
             )
             DropdownMenu(
                 modifier = Modifier.fillMaxWidth(),

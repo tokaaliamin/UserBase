@@ -22,5 +22,6 @@
     <string name="age">Age</string>
     <string name="enter_your_age">Enter your age</string>
     <string name="add">Add</string>
+    <string name="gender">Gender</string>
 
 </resources>
