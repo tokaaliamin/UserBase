@@ -2,6 +2,7 @@ package com.example.userbase.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.userbase.feature.addUser.data.local.sources.UserFormLocalDataSource
 import com.example.userbase.feature.common.data.local.database.AppDatabase
 import com.example.userbase.feature.usersList.data.local.sources.UsersListLocalDataSource
 import dagger.Module
@@ -19,6 +20,9 @@ abstract class ApplicationModule {
     companion object {
         @Provides
         fun provideUsersListLocalDataSource(db: AppDatabase) = UsersListLocalDataSource(db)
+
+        @Provides
+        fun provideUserFormLocalDataSource(db: AppDatabase) = UserFormLocalDataSource(db)
     }
 }
 

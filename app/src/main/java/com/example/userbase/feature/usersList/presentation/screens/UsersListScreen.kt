@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.userbase.R
+import com.example.userbase.feature.destinations.AddUserScreenDestination
 import com.example.userbase.feature.usersList.presentation.screens.actions.UsersListUiActions
 import com.example.userbase.feature.usersList.presentation.screens.components.AddUserButton
 import com.example.userbase.feature.usersList.presentation.screens.components.UserItem
@@ -24,14 +25,26 @@ import com.example.userbase.feature.usersList.presentation.screens.state.UserLis
 import com.example.userbase.feature.usersList.presentation.viewmodels.UsersListViewModel
 import com.example.userbase.ui.theme.LocalDimensions
 import com.example.userbase.ui.theme.UserBaseTheme
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
-fun UsersListScreen(usersListViewModel: UsersListViewModel = hiltViewModel()) {
+fun UsersListScreen(
+    usersListViewModel: UsersListViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator
+) {
     val uiState by usersListViewModel.uiState.collectAsStateWithLifecycle()
     usersListViewModel.onAction(UsersListUiActions.GetUsersList)
     UserBaseTheme {
         Scaffold(
-            floatingActionButton = { AddUserButton({}) },
+            floatingActionButton = {
+                AddUserButton({
+                    navigator.navigate(AddUserScreenDestination)
+                })
+            },
             modifier = Modifier.fillMaxSize()
         ) { innerPadding ->
             UsersListContent(innerPadding, uiState)

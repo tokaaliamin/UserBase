@@ -2,4 +2,25 @@
     <string name="app_name">UserBase</string>
     <string name="years">%1$d years</string>
     <string name="no_users_found">No users found</string>
+    <string name="add_user">Add user</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="username_is_required">Username is required</string>
+    <string name="username_must_be_at_least_3_characters">Username must be at least 3 characters</string>
+    <string name="username_must_not_exceed_20_characters">Username must not exceed 20 characters</string>
+    <string name="username_can_only_contain_letters_numbers_and_underscores">Username can only contain letters, numbers, and underscores</string>
+    <string name="job_title_is_required">Job title is required</string>
+    <string name="job_title_must_be_at_least_2_characters">Job title must be at least 2 characters</string>
+    <string name="job_title_must_not_exceed_50_characters">Job title must not exceed 50 characters</string>
+    <string name="please_select_a_gender">Please select a gender</string>
+    <string name="age_is_required">Age is required</string>
+    <string name="age_cant_be_zero">Age can\'t be 0</string>
+    <string name="username">Username</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="job_title">Job title</string>
+    <string name="enter_your_job_title">Enter your job title</string>
+    <string name="age">Age</string>
+    <string name="enter_your_age">Enter your age</string>
+    <string name="add">Add</string>
+
 </resources>
