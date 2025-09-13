@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
-    id("kotlin-kapt")
 }
 
 android {
@@ -68,14 +67,18 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    //Room
+    //Room - Only use KSP
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.room.compiler)
     implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler.v261)
+    ksp(libs.androidx.room.compiler)
 
-    // Hilt
+    // Hilt - Only use KSP
     implementation(libs.hilt)
     ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //Navigation
+    implementation(libs.nav)
+    ksp(libs.nav.ksp)
+
 }
