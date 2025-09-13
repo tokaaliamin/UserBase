@@ -23,43 +23,35 @@ class UserFormViewModel @Inject constructor(private val useCase: UserFormUseCase
     fun onAction(action: UserFormAction) {
         when (action) {
             is UserFormAction.UpdateUsername -> {
-                val usernameError = FormValidator.validateUsername(_uiState.value.username)
                 _uiState.update { state ->
                     state.copy(
                         username = action.username,
-                        usernameErrorId = usernameError
                     )
                 }
             }
 
             is UserFormAction.UpdateJobTitle -> {
-                val jobTitleError = FormValidator.validateJobTitle(_uiState.value.jobTitle)
 
                 _uiState.update { state ->
                     state.copy(
                         jobTitle = action.jobTitle,
-                        jobTitleErrorId = jobTitleError
                     )
                 }
             }
 
             is UserFormAction.UpdateAge -> {
-                val ageError = FormValidator.validateAge(_uiState.value.age)
 
                 _uiState.update { state ->
                     state.copy(
                         age = action.age,
-                        ageErrorId = ageError
                     )
                 }
             }
 
             is UserFormAction.UpdateGender -> {
-                val genderError = FormValidator.validateGender(_uiState.value.gender.orEmpty())
                 _uiState.update { state ->
                     state.copy(
                         gender = action.gender,
-                        genderErrorId = genderError
                     )
                 }
             }
