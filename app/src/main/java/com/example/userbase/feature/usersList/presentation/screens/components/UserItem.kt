@@ -24,8 +24,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.userbase.R
-import com.example.userbase.feature.usersList.presentation.models.Gender
-import com.example.userbase.feature.usersList.presentation.models.UserUIModel
+import com.example.userbase.feature.common.presentation.models.GenderUIModel
+import com.example.userbase.feature.common.presentation.models.UserUIModel
 import com.example.userbase.ui.theme.LocalDimensions
 import com.example.userbase.ui.theme.UserBaseTheme
 
@@ -45,7 +45,7 @@ fun UserItem(user: UserUIModel, modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(dimens.medium)
             ) {
-                GenderIcon(user.gender)
+                GenderIcon(user.genderUIModel)
                 UserName(user.name)
             }
             Spacer(modifier = Modifier.height(dimens.small))
@@ -101,12 +101,12 @@ fun Age(age: Int, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun GenderIcon(gender: Gender, modifier: Modifier = Modifier) {
+fun GenderIcon(genderUIModel: GenderUIModel, modifier: Modifier = Modifier) {
     val dimens = LocalDimensions.current
 
-    val icon = when (gender) {
-        is Gender.Female -> R.drawable.ic_female
-        is Gender.Male -> R.drawable.ic_male
+    val icon = when (genderUIModel) {
+        GenderUIModel.FEMALE -> R.drawable.ic_female
+        GenderUIModel.MALE -> R.drawable.ic_male
     }
 
     Image(
@@ -135,7 +135,7 @@ fun UsersListScreenPreview() {
         UserItem(
             user = UserUIModel(
                 1, "John Doe", age = 20, jobTitle = "Software Engineer",
-                gender = Gender.Male
+                genderUIModel = GenderUIModel.MALE
             )
         )
     }
